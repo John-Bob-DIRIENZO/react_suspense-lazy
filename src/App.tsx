@@ -1,6 +1,9 @@
 import React, {Suspense} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import ErrorBoundary from "./Component/ErrorBoundary";
+import {List} from "./Component/Memoized";
+import DemoUseMemo from "./Component/DemoUseMemo";
 
 // Je charge en Lazy Loading mon component <Profile/> mais pour qu'on puisse voir l'effet
 // du chargement, je passe une promesse qui ne va se résoudre qu'après 1 seconde
@@ -24,16 +27,28 @@ export default function App() {
     };
 
     return (
-        <div className="container text-center">
-            <BrowserRouter>
-                <Suspense fallback={<div style={loader}>Je charge !</div>}>
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        <Route path="/profile" element={<Profile/>}/>
-                    </Routes>
-                </Suspense>
-            </BrowserRouter>
-        </div>
+        <ErrorBoundary fallback={<h1>Oops, c'est cassé !</h1>}>
+            <div className="container text-center">
+                <BrowserRouter>
+                    <Suspense fallback={<div style={loader}>Je charge !</div>}>
+                        <Routes>
+                            <Route path='/' element={<Home/>}/>
+                            <Route path='/memo' element={<DemoUseMemo/>}/>
+                            <Route path="/list" element={<List elements={['Coucou', 'Francis', 'Huster']}/>}/>
+                            <Route path="/profile" element={<Profile name='Francis'/>}/>
+                        </Routes>
+                    </Suspense>
+                </BrowserRouter>
+            </div>
+        </ErrorBoundary>
     );
 }
+
+
+
+
+
+
+
+
 

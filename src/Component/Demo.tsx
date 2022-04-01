@@ -7,7 +7,7 @@ export default function MyComponent() {
     return (
         <div>
             <Suspense fallback={<div>Chargement...</div>}>
-                <Profile/>
+                <Profile name={'Francis'}/>
                 <OtherComponent/>
             </Suspense>
         </div>
