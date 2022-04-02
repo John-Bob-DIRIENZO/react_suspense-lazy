@@ -4,6 +4,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import ErrorBoundary from "./Component/ErrorBoundary";
 import {List} from "./Component/Memoized";
 import DemoUseMemo from "./Component/DemoUseMemo";
+import DemoUseCallback from "./Component/DemoUseCallback";
+import DemoUseRef from "./Component/DemoUseRef";
 
 // Je charge en Lazy Loading mon component <Profile/> mais pour qu'on puisse voir l'effet
 // du chargement, je passe une promesse qui ne va se résoudre qu'après 1 seconde
@@ -34,6 +36,8 @@ export default function App() {
                         <Routes>
                             <Route path='/' element={<Home/>}/>
                             <Route path='/memo' element={<DemoUseMemo/>}/>
+                            <Route path='/callback' element={<DemoUseCallback/>}/>
+                            <Route path='/ref' element={<DemoUseRef/>}/>
                             <Route path="/list" element={<List elements={['Coucou', 'Francis', 'Huster']}/>}/>
                             <Route path="/profile" element={<Profile name='Francis'/>}/>
                         </Routes>
