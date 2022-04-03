@@ -6,6 +6,8 @@ import {List} from "./Component/Memoized";
 import DemoUseMemo from "./Component/DemoUseMemo";
 import DemoUseCallback from "./Component/DemoUseCallback";
 import DemoUseRef from "./Component/DemoUseRef";
+import PromisesDemo from "./Component/PromisesDemo";
+import DemoFetch from "./Component/DemoFetch";
 
 // Je charge en Lazy Loading mon component <Profile/> mais pour qu'on puisse voir l'effet
 // du chargement, je passe une promesse qui ne va se résoudre qu'après 1 seconde
@@ -38,6 +40,8 @@ export default function App() {
                             <Route path='/memo' element={<DemoUseMemo/>}/>
                             <Route path='/callback' element={<DemoUseCallback/>}/>
                             <Route path='/ref' element={<DemoUseRef/>}/>
+                            <Route path='/promise' element={<PromisesDemo/>}/>
+                            <Route path='/fetch' element={<DemoFetch/>}/>
                             <Route path="/list" element={<List elements={['Coucou', 'Francis', 'Huster']}/>}/>
                             <Route path="/profile" element={<Profile name='Francis'/>}/>
                         </Routes>
